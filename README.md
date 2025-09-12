@@ -1,4 +1,20 @@
-# Better Auth Next.js Starter
+<p align="center">
+  <img alt="" src="/.github/assets/cover.png" />
+</p>
+
+<h1 align="center">
+  Better Auth Next.js Starter
+</h1>
+
+<p align="center">
+  <a aria-label="Framework" href="https://nextjs.org">
+    <img alt="" src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000">
+  </a>
+  <img alt="" src="https://img.shields.io/github/languages/top/techwithanirudh/better-auth-nextjs-starter?style=for-the-badge&labelColor=000">
+  <a aria-label="License" href="https://github.com/techwithanirudh/better-auth-nextjs-starter/blob/main/LICENSE">
+    <img alt="" src="https://img.shields.io/github/license/techwithanirudh/better-auth-nextjs-starter?style=for-the-badge&labelColor=000">
+  </a>
+</p>
 
 ## Quickstart
 
