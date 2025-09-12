@@ -20,7 +20,7 @@ export function Header() {
           asChild
         >
           <Link
-            href="https://github.com/techwithanirudh/next-better-auth-starter"
+            href="https://github.com/techwithanirudh/better-auth-nextjs-starter"
             target="_blank"
           >
             <GitHubIcon />
