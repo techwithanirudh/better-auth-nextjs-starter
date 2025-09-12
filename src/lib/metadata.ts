@@ -1,6 +1,6 @@
-import type { Metadata } from 'next'
-import { env } from '@/env'
-import { APP_DEFAULT_TITLE } from './constants'
+import type { Metadata } from "next"
+import { env } from "@/env"
+import { APP_DEFAULT_TITLE } from "./constants"
 
 export function createMetadata(override: Metadata): Metadata {
   return {
@@ -9,22 +9,21 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: baseUrl.toString(),
-      images: '/banner.png',
+      images: "/banner.png",
       siteName: APP_DEFAULT_TITLE,
       ...override.openGraph,
     },
     twitter: {
-      card: 'summary_large_image',
-      creator: '@AnirudhWith',
+      card: "summary_large_image",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: '/banner.png',
+      images: "/banner.png",
       ...override.twitter,
     },
   }
 }
 
 export const baseUrl =
-  env.NODE_ENV === 'development' || !env.NEXT_PUBLIC_BASE_URL
-    ? new URL('http://localhost:3000')
-    : new URL(`https://${env.NEXT_PUBLIC_BASE_URL}`)
+  env.NODE_ENV === "development" || !env.NEXT_PUBLIC_BASE_URL
+    ? new URL("http://localhost:3000")
+    : new URL(`${env.NEXT_PUBLIC_BASE_URL}`)
