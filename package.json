@@ -94,6 +94,7 @@
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
-    "core-js"
+    "core-js",
+    "lefthook"
   ]
 }
