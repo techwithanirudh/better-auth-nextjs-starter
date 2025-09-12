@@ -1,7 +1,9 @@
 import { createEnv } from '@t3-oss/env-nextjs'
 import { z } from 'zod'
+import { vercel } from "@t3-oss/env-core/presets-zod";
 
 export const env = createEnv({
+  extends: [vercel()],
   server: {
     NODE_ENV: z
       .enum(['development', 'production', 'test'])
@@ -42,6 +44,10 @@ export const env = createEnv({
     NEXT_PUBLIC_BASE_URL: z.url(),
   },
   experimental__runtimeEnv: {
-    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+    NEXT_PUBLIC_BASE_URL:
+      process.env.NEXT_PUBLIC_BASE_URL ??
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : undefined),
   },
 })

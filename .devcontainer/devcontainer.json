@@ -28,5 +28,6 @@
       "extensions": ["streetsidesoftware.code-spell-checker"]
     }
   },
+  "postCreateCommand": "bun install",
   "remoteUser": "bun"
 }

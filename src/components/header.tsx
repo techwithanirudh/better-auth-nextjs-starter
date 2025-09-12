@@ -1,4 +1,4 @@
-import { GitHubIcon, UserButton } from '@daveyplate/better-auth-ui'
+import { GitHubIcon, UserButton } from 'better-auth-ui'
 import Link from 'next/link'
 import { APP_NAME } from '@/lib/constants'
 import { ModeToggle } from './mode-toggle'
@@ -27,7 +27,7 @@ export function Header() {
         </Button>
 
         <ModeToggle />
-        <UserButton size="icon" />
+        <UserButton size="icon" align='end' />
       </div>
     </header>
   )

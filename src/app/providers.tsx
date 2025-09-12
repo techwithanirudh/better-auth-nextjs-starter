@@ -1,7 +1,7 @@
 'use client'
 
 import { ProgressProvider } from '@bprogress/next/app'
-import { AuthUIProvider } from '@daveyplate/better-auth-ui'
+import { AuthUIProvider } from 'better-auth-ui'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ThemeProvider } from 'next-themes'
