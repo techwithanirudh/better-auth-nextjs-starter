@@ -1,9 +1,9 @@
 'use client'
 
 import { UserAvatar } from 'better-auth-ui'
-import { useSession } from '@/lib/auth-client'
 import { Loader2 } from 'lucide-react'
 import { redirect } from 'next/navigation'
+import { useSession } from '@/lib/auth-client'
 
 export default function Home() {
   const { data: session, isPending: isLoading } = useSession()
@@ -24,8 +24,8 @@ export default function Home() {
       {!isLoading && user && (
         <div className="flex items-center gap-4">
           <UserAvatar size="lg" user={user} />
-          <h1 className="text-2xl font-semibold">
-            {`Welcome, ${user.name ?? "there"}!`}
+          <h1 className="font-semibold text-2xl">
+            {`Welcome, ${user.name ?? 'there'}!`}
           </h1>
         </div>
       )}

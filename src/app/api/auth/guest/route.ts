@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 // import { auth, getSession } from '@/server/auth'
 
 // export async function GET(request: NextRequest) {
@@ -30,5 +30,5 @@ import { type NextRequest, NextResponse } from 'next/server'
 // }
 
 export async function GET() {
-  return NextResponse.json({ message: 'This feature has been disabled.',  })
+  return NextResponse.json({ message: 'This feature has been disabled.' })
 }
