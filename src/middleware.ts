@@ -1,22 +1,46 @@
 import { getSessionCookie } from 'better-auth/cookies'
 import { type NextRequest, NextResponse } from 'next/server'
 
-export async function middleware(request: NextRequest) {
-  // Check cookie for optimistic redirects for protected routes
-  // Use getSession in your RSC to protect a route via SSR or useAuthenticate client side
-  const sessionCookie = getSessionCookie(request)
+import {
+  DEFAULT_LOGIN_REDIRECT,
+  getSignInUrl,
+  isApiAuth,
+  isAuthRoute,
+  isPublicRoute,
+} from '@/routes'
 
-  if (!sessionCookie) {
-    const redirectTo = request.nextUrl.pathname + request.nextUrl.search
-    return NextResponse.redirect(
-      new URL(`/auth/sign-in?redirectTo=${redirectTo}`, request.url)
-    )
+export async function middleware(request: NextRequest) {
+  const session = getSessionCookie(request)
+
+  const pathname = request.nextUrl.pathname
+
+  if (isApiAuth(pathname)) {
+    return NextResponse.next()
+  }
+
+  if (isAuthRoute(pathname)) {
+    if (session) {
+      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, request.url))
+    }
+    return NextResponse.next()
+  }
+
+  if (!session && !isPublicRoute(pathname)) {
+    return NextResponse.redirect(getSignInUrl(request))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  // Protected routes
-  matcher: ['/auth/settings'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
 }

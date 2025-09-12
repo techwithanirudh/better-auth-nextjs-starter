@@ -24,8 +24,39 @@
   },
   "customizations": {
     "vscode": {
-      "settings": {},
-      "extensions": ["streetsidesoftware.code-spell-checker"]
+      "extensions": [
+        // TypeScript
+        "better-ts-errors.better-ts-errors",
+        // Other
+        "bradlc.vscode-tailwindcss",
+        "streetsidesoftware.code-spell-checker",
+        "biomejs.biome",
+        "aaron-bond.better-comments",
+        "formulahendry.auto-rename-tag",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "debug.internalConsoleOptions": "neverOpen",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.guides.bracketPairs": "active",
+        "scm.defaultViewMode": "tree",
+        "diffEditor.diffAlgorithm": "advanced",
+        "diffEditor.experimental.showMoves": true,
+        "diffEditor.renderSideBySide": false,
+        "files.watcherExclude": {
+          "**/node_modules/**": true
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.biome": "explicit",
+          "source.organizeImports.biome": "explicit"
+        },
+        // Prettifies the response with emojis and such.
+        "betterTypeScriptErrors.prettify": true,
+        "editor.cursorSmoothCaretAnimation": "on"
+      }
     }
   },
   "postCreateCommand": "bun install",

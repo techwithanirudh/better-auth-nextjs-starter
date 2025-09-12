@@ -1,6 +1,5 @@
 import type { Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import type { ReactNode } from 'react'
 
 import '@/styles/globals.css'
 
@@ -42,9 +41,7 @@ export const viewport: Viewport = {
   width: 'device-width',
 }
 
-export default function RootLayout({
-  children,
-}: LayoutProps<'/'>) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body

@@ -9,7 +9,10 @@ const BetterAuth = (props: SVGProps<SVGSVGElement>) => (
     height="1em"
     {...props}
   >
-    <path fill={props.fill} d="M69 121h86.988v259H69zM337.575 121H430v259h-92.425z" />
+    <path
+      fill={props.fill}
+      d="M69 121h86.988v259H69zM337.575 121H430v259h-92.425z"
+    />
     <path
       fill={props.fill}
       d="M427.282 121v83.456h-174.52V121zM430 296.544V380H252.762v-83.456z"
