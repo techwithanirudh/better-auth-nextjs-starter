@@ -8,7 +8,7 @@ const APP_DESCRIPTION =
 
 const logo = (
   <>
-    <BetterAuth className="size-5" fill="currentColor" />
+    <BetterAuth className="size-6" fill="currentColor" />
   </>
 )
 
