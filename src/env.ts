@@ -8,12 +8,6 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(['development', 'production', 'test'])
       .default('development'),
-    GOOGLE_GENERATIVE_AI_API_KEY: z
-      .string()
-      .min(
-        1,
-        'GOOGLE_GENERATIVE_AI_API_KEY is required. Please set it in your .env file.'
-      ),
     // Database
     DATABASE_URL: z.url(),
     // Auth
