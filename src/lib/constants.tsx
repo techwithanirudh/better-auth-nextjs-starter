@@ -1,14 +1,14 @@
-import BetterAuth from '@/components/logos/better-auth'
+import LogoMark from "@/components/logos/mark"
 
-const APP_NAME = 'Better-Auth Starter'
-const APP_DEFAULT_TITLE = 'Better-Auth Next.js Starter'
-const APP_TITLE_TEMPLATE = '%s | Better-Auth Next.js Starter'
+const APP_NAME = "Next.js Starter"
+const APP_DEFAULT_TITLE = "Next.js Starter"
+const APP_TITLE_TEMPLATE = "%s | Next.js Starter"
 const APP_DESCRIPTION =
-  'Better-Auth Next.js Starter is a starter kit for building a Next.js application with Better-Auth'
+  "A minimal Next.js starter with Tailwind CSS and shadcn/ui."
 
 const logo = (
   <>
-    <BetterAuth className="size-6" fill="currentColor" />
+    <LogoMark className="size-6" fill="currentColor" />
   </>
 )
 

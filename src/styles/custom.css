@@ -1,5 +1,4 @@
 @import "tailwindcss-safe-area";
-@import "better-auth-ui/css";
 
 @layer base {
 	button:not(:disabled),
