@@ -60,10 +60,6 @@ BETTER_AUTH_SECRET=""
 # CORS_ORIGIN='["http://localhost:3000","https://your-domain.com"]'
 CORS_ORIGIN="http://localhost:3000"
 
-# Google Gemini API key (required)
-GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key_here
-
-
 # Runtime (client-exposed)
 
 # Public base URL of your site (required)
