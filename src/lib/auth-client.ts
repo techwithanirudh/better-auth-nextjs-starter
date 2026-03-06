@@ -6,13 +6,13 @@ import { createAuthClient } from 'better-auth/react'
 import { toast } from 'sonner'
 
 import type { auth } from '@/server/auth'
-// import { env } from '@/env'
+import { env } from '@/env'
 
 // @see https://github.com/better-auth/better-auth/issues/1391
 export const authClient: ReturnType<typeof createAuthClient> = createAuthClient(
   {
     plugins: [inferAdditionalFields<typeof auth>(), anonymousClient()],
-    // baseURL: env.NEXT_PUBLIC_BASE_URL,
+    baseURL: env.NEXT_PUBLIC_BASE_URL,
     fetchOptions: {
       onError(e) {
         if (e.error.status === 429) {

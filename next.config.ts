@@ -1,49 +1,59 @@
 import { fileURLToPath } from 'node:url'
 import bundleAnalyzer from '@next/bundle-analyzer'
-
-import createJiti from 'jiti'
 import type { NextConfig } from 'next'
 
-const jiti = createJiti(fileURLToPath(import.meta.url))
-jiti('./src/env')
+async function createNextConfig(): Promise<NextConfig> {
+  const { createJiti } = await import('jiti')
+  const jiti = createJiti(fileURLToPath(import.meta.url))
 
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  productionBrowserSourceMaps: process.env.SOURCE_MAPS === 'true',
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  typedRoutes: true,
-  headers: async () => [
-    {
-      source: '/(.*)',
-      headers: [
-        {
-          key: 'X-Content-Type-Options',
-          value: 'nosniff',
-        },
-        {
-          key: 'Content-Security-Policy',
-          value: "frame-ancestors 'self';",
-        },
-        {
-          key: 'X-Frame-Options',
-          value: 'SAMEORIGIN',
-        },
-        {
-          key: 'X-XSS-Protection',
-          value: '1; mode=block',
-        },
-      ],
+  await jiti.import('./src/env')
+
+  const nextConfig: NextConfig = {
+    reactStrictMode: true,
+    productionBrowserSourceMaps: process.env.SOURCE_MAPS === 'true',
+    logging: {
+      fetches: {
+        fullUrl: true,
+      },
     },
-  ],
+    typescript: {
+      ignoreBuildErrors: true,
+    },
+    typedRoutes: true,
+    headers: async () => [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self';",
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      }
+    ],
+  }
+
+  return nextConfig
 }
 
 const bundleAnalyzerPlugin = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
-const NextApp = () => {
+const NextApp = async () => {
+  const nextConfig = await createNextConfig()
   const plugins = [bundleAnalyzerPlugin]
   return plugins.reduce((config, plugin) => plugin(config), nextConfig)
 }
