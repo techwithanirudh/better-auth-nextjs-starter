@@ -9,6 +9,7 @@ const siteUrl =
 const config: IConfig = {
   siteUrl,
   generateRobotsTxt: true,
+  exclude: ['/auth/*', '/account/*'],
 }
 
 export default config
