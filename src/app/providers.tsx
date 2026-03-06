@@ -2,10 +2,10 @@
 
 import { ProgressProvider } from '@bprogress/next/app'
 import { AuthUIProvider } from 'better-auth-ui'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ThemeProvider } from 'next-themes'
-import type { ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import { Toaster } from 'sonner'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { authClient } from '@/lib/auth-client'
@@ -15,30 +15,41 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
+      attribute='class'
+      defaultTheme='system'
       disableTransitionOnChange
+      enableSystem
     >
       <AuthUIProvider
         authClient={authClient}
-        navigate={router.push}
-        replace={router.replace}
+        Link={({ href, className, children }) => (
+          <NextLink
+            className={className}
+            href={href as ComponentProps<typeof NextLink>['href']}
+          >
+            {children}
+          </NextLink>
+        )}
+        navigate={(href) => {
+          router.push(href as Parameters<typeof router.push>[0])
+        }}
         onSessionChange={() => {
           router.refresh()
         }}
-        Link={Link}
+        replace={(href) => {
+          router.replace(href as Parameters<typeof router.replace>[0])
+        }}
       >
         <ProgressProvider
-          height="2px"
-          color="var(--color-primary)"
+          color='var(--color-primary)'
+          delay={1000}
+          height='2px'
           options={{
             showSpinner: false,
           }}
-          stopDelay={1000}
-          delay={1000}
-          startOnLoad
           shallowRouting
+          startOnLoad
+          stopDelay={1000}
         >
           {children}
           <Toaster />

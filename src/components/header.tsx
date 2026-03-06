@@ -6,29 +6,30 @@ import { Button } from './ui/button'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 flex h-12 justify-between border-b bg-background/60 px-safe-or-4 backdrop-blur md:h-14 md:px-safe-or-6">
-      <Link href="/" className="flex items-center gap-2 font-bold">
+    <header className='sticky top-0 z-50 flex h-12 justify-between border-b bg-background/60 px-safe-or-4 backdrop-blur md:h-14 md:px-safe-or-6'>
+      <Link className='flex items-center gap-2 font-bold' href='/'>
         {logo}
         {APP_NAME}
       </Link>
 
-      <div className="flex items-center gap-2">
+      <div className='flex items-center gap-2'>
         <Button
-          variant="outline"
-          size="icon"
-          className="size-8 rounded-full"
           asChild
+          className='size-8 rounded-full'
+          size='icon'
+          variant='outline'
         >
           <Link
-            href="https://github.com/techwithanirudh/better-auth-nextjs-starter"
-            target="_blank"
+            href='https://github.com/techwithanirudh/better-auth-nextjs-starter'
+            rel='noopener noreferrer'
+            target='_blank'
           >
             <GitHubIcon />
           </Link>
         </Button>
 
         <ModeToggle />
-        <UserButton size="icon" align="end" />
+        <UserButton align='end' size='icon' />
       </div>
     </header>
   )

@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -8,7 +8,6 @@
   "files": {
     "ignoreUnknown": true,
     "includes": [
-      "**",
       "!node_modules",
       "!**/.next",
       "!**/dist",
@@ -21,23 +20,33 @@
       "!**/*.mdx",
       "!src/components/ui",
       "!drizzle",
-      "!**/*.css",
       "!**/*.grit"
     ]
   },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "lineEnding": "lf",
-    "indentWidth": 2,
-    "lineWidth": 80
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "linter": {
     "enabled": true,
     "rules": {
       "a11y": {
         "noSvgWithoutTitle": "off",
-        "useGenericFontNames": "off"
+        "useGenericFontNames": "off",
+        "useSemanticElements": "warn"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 25
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noNamespaceImport": "off"
       },
       "correctness": {
         "noUnusedImports": {
@@ -77,30 +86,22 @@
       }
     }
   },
-  "css": {
-    "linter": {
-      "enabled": true
-    },
-    "formatter": {
-      "enabled": true,
-      "indentStyle": "space",
-      "indentWidth": 2,
-      "lineWidth": 80
-    },
-    "parser": {
-      "cssModules": true
-    }
-  },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
       "semicolons": "asNeeded",
-      "trailingCommas": "es5"
+      "trailingCommas": "es5",
+      "jsxQuoteStyle": "single"
     }
   },
   "json": {
     "parser": {
       "allowComments": true
     }
-  }
+  },
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ]
 }

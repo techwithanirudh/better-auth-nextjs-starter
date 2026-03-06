@@ -20,8 +20,8 @@ jobs:
       - name: Run type check
         run: bun typecheck
 
-  biome:
-    name: Biome
+  ultracite:
+    name: Ultracite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -30,7 +30,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Run Biome
+      - name: Run Ultracite
         run: bun check
 
   spelling:

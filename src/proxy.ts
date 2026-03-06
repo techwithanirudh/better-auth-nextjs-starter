@@ -9,7 +9,7 @@ import {
   isPublicRoute,
 } from '@/routes'
 
-export async function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const session = getSessionCookie(request)
 
   const pathname = request.nextUrl.pathname
@@ -25,7 +25,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  if (!session && !isPublicRoute(pathname)) {
+  if (!(session || isPublicRoute(pathname))) {
     return NextResponse.redirect(getSignInUrl(request))
   }
 
