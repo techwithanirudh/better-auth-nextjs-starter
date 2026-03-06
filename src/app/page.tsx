@@ -37,10 +37,7 @@ export default function Home() {
             <CardTitle className='mt-2 max-w-full truncate text-2xl'>
               {user.name ?? 'Unnamed user'}
             </CardTitle>
-            <CardDescription
-              className='max-w-full truncate text-muted-foreground text-sm'
-              title={user.email}
-            >
+            <CardDescription className='max-w-full truncate' title={user.email}>
               {user.email}
             </CardDescription>
           </CardHeader>
