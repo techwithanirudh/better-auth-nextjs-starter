@@ -15,41 +15,41 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
+      attribute='class'
+      defaultTheme='system'
       disableTransitionOnChange
+      enableSystem
     >
       <AuthUIProvider
         authClient={authClient}
-        navigate={(href) => {
-          router.push(href as Parameters<typeof router.push>[0])
-        }}
-        replace={(href) => {
-          router.replace(href as Parameters<typeof router.replace>[0])
-        }}
-        onSessionChange={() => {
-          router.refresh()
-        }}
         Link={({ href, className, children }) => (
           <NextLink
-            href={href as ComponentProps<typeof NextLink>["href"]}
             className={className}
+            href={href as ComponentProps<typeof NextLink>['href']}
           >
             {children}
           </NextLink>
         )}
+        navigate={(href) => {
+          router.push(href as Parameters<typeof router.push>[0])
+        }}
+        onSessionChange={() => {
+          router.refresh()
+        }}
+        replace={(href) => {
+          router.replace(href as Parameters<typeof router.replace>[0])
+        }}
       >
         <ProgressProvider
-          height="2px"
-          color="var(--color-primary)"
+          color='var(--color-primary)'
+          delay={1000}
+          height='2px'
           options={{
             showSpinner: false,
           }}
-          stopDelay={1000}
-          delay={1000}
-          startOnLoad
           shallowRouting
+          startOnLoad
+          stopDelay={1000}
         >
           {children}
           <Toaster />

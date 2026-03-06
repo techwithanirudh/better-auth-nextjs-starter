@@ -41,7 +41,7 @@ async function createNextConfig(): Promise<NextConfig> {
             value: '1; mode=block',
           },
         ],
-      }
+      },
     ],
   }
 

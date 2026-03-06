@@ -18,10 +18,14 @@ export const env = createEnv({
     CORS_ORIGIN: z.preprocess((val) => {
       if (typeof val === 'string') {
         const s = val.trim()
-        if (s === '') return undefined
+        if (s === '') {
+          return undefined
+        }
         try {
           const parsed = JSON.parse(s)
-          if (Array.isArray(parsed)) return parsed
+          if (Array.isArray(parsed)) {
+            return parsed
+          }
         } catch {
           // ignore JSON parse errors
         }

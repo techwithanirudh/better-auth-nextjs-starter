@@ -25,7 +25,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
-  if (!session && !isPublicRoute(pathname)) {
+  if (!(session || isPublicRoute(pathname))) {
     return NextResponse.redirect(getSignInUrl(request))
   }
 
