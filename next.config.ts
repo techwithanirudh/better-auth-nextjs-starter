@@ -9,9 +9,7 @@ jiti('./src/env')
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  poweredByHeader: false,
   productionBrowserSourceMaps: process.env.SOURCE_MAPS === 'true',
-  devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
   },
