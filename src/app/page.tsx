@@ -3,6 +3,12 @@
 import { UserAvatar } from 'better-auth-ui'
 import { Loader2 } from 'lucide-react'
 import { redirect } from 'next/navigation'
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { useSession } from '@/lib/auth-client'
 
 export default function Home() {
@@ -14,21 +20,32 @@ export default function Home() {
   }
 
   return (
-    <div className='flex min-h-[calc(100dvh-3.5rem)] items-center justify-center p-6 sm:p-10'>
+    <main className='flex min-h-[calc(100dvh-3.5rem)] items-center justify-center px-6 py-10'>
       {isLoading && (
-        <div className='flex items-center gap-4'>
-          <Loader2 className='animate-spin' />
+        <div className='flex items-center gap-3 text-muted-foreground text-sm'>
+          <Loader2 className='size-4 animate-spin' />
+          Loading...
         </div>
       )}
 
       {!isLoading && user && (
-        <div className='flex items-center gap-4'>
-          <UserAvatar size='lg' user={user} />
-          <h1 className='font-semibold text-2xl'>
-            {`Welcome, ${user.name ?? 'there'}!`}
-          </h1>
-        </div>
+        <Card className='w-full max-w-sm shrink-0 rounded-3xl'>
+          <CardHeader className='items-center text-center'>
+            <div className='flex justify-center'>
+              <UserAvatar size='lg' user={user} />
+            </div>
+            <CardTitle className='mt-2 max-w-full truncate text-2xl'>
+              {user.name ?? 'Unnamed user'}
+            </CardTitle>
+            <CardDescription
+              className='max-w-full truncate text-muted-foreground text-sm'
+              title={user.email}
+            >
+              {user.email}
+            </CardDescription>
+          </CardHeader>
+        </Card>
       )}
-    </div>
+    </main>
   )
 }
