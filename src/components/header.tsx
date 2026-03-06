@@ -21,6 +21,7 @@ export function Header() {
         >
           <Link
             href='https://github.com/techwithanirudh/better-auth-nextjs-starter'
+            rel='noopener noreferrer'
             target='_blank'
           >
             <GitHubIcon />

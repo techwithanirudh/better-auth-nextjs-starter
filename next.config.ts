@@ -36,10 +36,6 @@ async function createNextConfig(): Promise<NextConfig> {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN',
           },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
         ],
       },
     ],

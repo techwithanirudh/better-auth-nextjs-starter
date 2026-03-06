@@ -50,7 +50,7 @@ export const auth = betterAuth({
 
 **Note**: This requires `sendVerificationEmail` to be configured and only applies to email/password sign-ins.
 
-## Client Side Validation
+## Client-Side Validation
 
 Implement client-side validation for immediate user feedback and reduced server load.
 
