@@ -26,10 +26,3 @@
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
 }
-
-/** iOS Dynamic System Font Scaling */
-@supports (-webkit-touch-callout: none) {
-  html {
-    font: -apple-system-body;
-  }
-}
