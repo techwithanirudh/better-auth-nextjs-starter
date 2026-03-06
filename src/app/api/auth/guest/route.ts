@@ -29,6 +29,6 @@ import { NextResponse } from 'next/server'
 //   return response
 // }
 
-export async function GET() {
+export function GET() {
   return NextResponse.json({ message: 'This feature has been disabled.' })
 }

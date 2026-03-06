@@ -28,13 +28,6 @@
       "tailwindDirectives": true
     }
   },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "lineEnding": "lf",
-    "indentWidth": 2,
-    "lineWidth": 80
-  },
   "linter": {
     "enabled": true,
     "rules": {
